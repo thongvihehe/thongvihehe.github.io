@@ -2,43 +2,123 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Trang cá nhân của tôi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vĩ Minh Thông - Trang Cá Nhân</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+
     body {
-      font-family: sans-serif;
+      margin: 0;
+      font-family: 'Kanit', sans-serif;
+      background: radial-gradient(circle at center, #1a1a1a, #000);
+      color: #f7c873;
       text-align: center;
-      background: linear-gradient(135deg, #8ec5fc, #e0c3fc);
-      color: #333;
-      padding-top: 100px;
+      overflow: hidden;
     }
-    img {
-      width: 150px;
+
+    /* Hiệu ứng chakra xoáy */
+    .chakra {
+      position: fixed;
+      width: 200px;
+      height: 200px;
+      border: 4px solid #f77f00;
       border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin 8s linear infinite;
+      opacity: 0.1;
     }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    header {
+      margin-top: 80px;
+    }
+
+    img.avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid #f77f00;
+      box-shadow: 0 0 20px #f77f00;
+    }
+
     h1 {
-      color: #222;
+      margin-top: 20px;
+      font-size: 2em;
+      color: #ffb347;
+      text-shadow: 0 0 10px #f77f00;
     }
-    button {
-      margin-top: 15px;
+
+    p {
+      font-size: 1.1em;
+      color: #f1e9d2;
+      max-width: 600px;
+      margin: 10px auto;
+    }
+
+    .btn {
+      background: #f77f00;
+      color: #000;
       padding: 10px 20px;
       border: none;
-      background: #333;
-      color: white;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: bold;
+      margin: 5px;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background: #ffb347;
+      transform: scale(1.05);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+      font-size: 0.9em;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <img src="https://i.imgur.com/4AiXzf8.jpeg" alt="avatar">
-  <h1>Xin chào, mình là <span style="color:#0078ff;">Vi Minh Thong</span></h1>
-  <p>Yêu âm nhạc 🎧 và công nghệ 💻</p>
+  <div class="chakra"></div>
+
+  <header>
+    <img class="avatar" src="https://i.imgur.com/4AiXzf8.jpeg" alt="Ảnh đại diện">
+    <h1>Vĩ Minh Thông</h1>
+    <p>“Nếu ai đó nói bạn không thể... hãy chứng minh rằng họ sai!” — Naruto 🌀</p>
+
+    <div>
+      <button class="btn" onclick="playMusic()">▶️ Phát nhạc</button>
+      <button class="btn" onclick="pauseMusic()">⏸️ Dừng nhạc</button>
+    </div>
+  </header>
 
   <audio id="music" loop>
-    <source src="https://tentaikhoan.github.io/music.mp3" type="audio/mpeg">
+    <!-- Bạn có thể thay link dưới đây bằng bài Oasis khác (file .mp3 hoặc link public) -->
+    <source src="https://dl.dropboxusercontent.com/scl/fi/r5pbtw0nspx7j47v69cbz/oasis-stop.mp3?rlkey=4ukm6vzf2i9h6l34uhvly9h8s&dl=0" type="audio/mpeg">
   </audio>
 
-  <button onclick="document.getElementById('music').play()">▶️ Phát nhạc</button>
-  <button onclick="document.getElementById('music').pause()">⏸️ Dừng nhạc</button>
+  <footer>
+    © 2025 Vĩ Minh Thông | Inspired by Naruto 🍥
+  </footer>
+
+  <script>
+    const music = document.getElementById('music');
+    function playMusic() {
+      music.play();
+    }
+    function pauseMusic() {
+      music.pause();
+    }
+  </script>
 </body>
 </html>
